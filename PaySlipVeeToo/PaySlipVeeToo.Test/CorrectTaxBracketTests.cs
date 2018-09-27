@@ -10,13 +10,18 @@ namespace PaySlipVeeToo.Test
     public class IncomeTaxTests
     {
         private static readonly JSONFileReader _jsonFileReader = new JSONFileReader();
+        private readonly TaxTable _taxTable;
+
+        public IncomeTaxTests()
+        {
+            _taxTable = new TaxTable(_jsonFileReader);
+        }
 
         [Theory]
         [MemberData(nameof(GetData))]
         public void GivenAnnualSalaryWhenParsingThroughTaxBracketsThenReturnCorrectTaxBracket(object expected , decimal annualSalary)
         {
-            var incomeTaxCalculator = new IncomeTaxCalculator(_jsonFileReader);
-            var result = incomeTaxCalculator.ReturnCorrectTaxBracket(annualSalary);
+            var result = _taxTable.ReturnCorrectTaxBracket(annualSalary);
 
             expected.Should().BeEquivalentTo(result);
         }
@@ -24,8 +29,7 @@ namespace PaySlipVeeToo.Test
         [Fact]
         public void GivenInvalidAnnualSalaryWhenParsingThroughTaxBracketsThenReturnException()
         {
-            var incomeTaxCalculator = new IncomeTaxCalculator(_jsonFileReader);
-            Assert.Throws<ArgumentException>(() => incomeTaxCalculator.ReturnCorrectTaxBracket(-1));
+            Assert.Throws<ArgumentException>(() => _taxTable.ReturnCorrectTaxBracket(-1));
         }
         
         

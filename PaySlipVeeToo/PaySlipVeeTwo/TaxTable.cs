@@ -4,11 +4,11 @@ using PaySlipVeeTwo;
 
 namespace PaySlipVeeToo.Test
 {
-    public class IncomeTaxCalculator 
+    public class TaxTable 
     {
-        private readonly TaxTable _taxTable;
+        private readonly PaySlipVeeTwo.TaxTable _taxTable;
 
-        public IncomeTaxCalculator(ITaxTable getTaxBracket)
+        public TaxTable(ITaxTable getTaxBracket)
         {
             _taxTable = getTaxBracket.GetTaxTable();
 
