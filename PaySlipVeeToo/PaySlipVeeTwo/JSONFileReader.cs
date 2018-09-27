@@ -4,18 +4,23 @@ using Newtonsoft.Json;
 
 namespace PaySlipVeeTwo
 {
-    public class JSONFileReader
+    public class JSONFileReader:ITaxTable
     {
         
-        public List<TaxBracket> DeserialiseJSON(string filePath)
+        public TaxTable DeserialiseJSON()
         {
             
-            filePath = "/Users/saish.dharvotkar/Projects/src/Katas/PaySlip_VEETOOOO/PaySlipVeeToo/PaySlipVeeTwo/Resources/TaxableIncomeBrackets.json";
+            var filePath = "/Users/saish.dharvotkar/Projects/src/Katas/PaySlip_VEETOOOO/PaySlipVeeToo/PaySlipVeeTwo/Resources/TaxableIncomeBrackets.json";
             var streamReader = new StreamReader(filePath);
             var json = streamReader.ReadToEnd();
-            var taxTable = JsonConvert.DeserializeObject<List<TaxBracket>>(json);
+            TaxTable taxTable = JsonConvert.DeserializeObject<TaxTable>(json);
 
             return taxTable;
+        }
+
+        public TaxTable GetTaxTable()
+        {
+            return DeserialiseJSON();
         }
     }
 }

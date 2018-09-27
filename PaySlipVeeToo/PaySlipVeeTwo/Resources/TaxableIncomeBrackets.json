@@ -1,27 +1,29 @@
-﻿[
-  {
-    "AnnualIncomeThreshold": 0,
-    "AdditionalTax": 0,
-    "TaxRate": 0
-  },
-  {
-    "AnnualIncomeThreshold": 18201,
-    "AdditionalTax": 0,
-    "TaxRate": 19
-  },
-  {
-    "AnnualIncomeThreshold": 37001,
-    "AdditionalTax": 3572,
-    "TaxRate": 32.5
-  },
-  {
-    "AnnualIncomeThreshold": 87001,
-    "AdditionalTax": 19822,
-    "TaxRate": 37
-  },
-  {
-    "AnnualIncomeThreshold": 180001,
-    "AdditionalTax": 54232,
-    "TaxRate": 45
-  }
-]
+﻿{
+  "TaxBrackets": [
+    {
+      "AnnualIncomeThreshold": 0,
+      "AdditionalTax": 0,
+      "TaxRate": 0
+    },
+    {
+      "AnnualIncomeThreshold": 18201,
+      "AdditionalTax": 0,
+      "TaxRate": 19
+    },
+    {
+      "AnnualIncomeThreshold": 37001,
+      "AdditionalTax": 3572,
+      "TaxRate": 32.5
+    },
+    {
+      "AnnualIncomeThreshold": 87001,
+      "AdditionalTax": 19822,
+      "TaxRate": 37
+    },
+    {
+      "AnnualIncomeThreshold": 180001,
+      "AdditionalTax": 54232,
+      "TaxRate": 45
+    }
+  ]
+}
