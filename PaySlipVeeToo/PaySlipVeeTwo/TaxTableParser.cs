@@ -4,11 +4,11 @@ using PaySlipVeeTwo;
 
 namespace PaySlipVeeToo.Test
 {
-    public class TaxTable 
+    public class TaxTableParser 
     {
-        private readonly PaySlipVeeTwo.TaxTable _taxTable;
+        private readonly TaxTable _taxTable;
 
-        public TaxTable(ITaxTable getTaxBracket)
+        public TaxTableParser(ITaxTable getTaxBracket)
         {
             _taxTable = getTaxBracket.GetTaxTable();
 
@@ -17,7 +17,7 @@ namespace PaySlipVeeToo.Test
         public TaxBracket ReturnCorrectTaxBracket(decimal annualSalary)
         {
             CheckIfAnnualSalaryIsValid(annualSalary);
-            return annualSalary > 180001 ? _taxTable.TaxBrackets[4] : _taxTable.TaxBrackets.Where(x => x.AnnualIncomeThreshold > annualSalary).OrderBy(x => x.AnnualIncomeThreshold).First();
+            return  _taxTable.TaxBrackets.Where(x => x.AnnualIncomeThreshold <= annualSalary).OrderByDescending(x => x.AnnualIncomeThreshold).First();
         }
 
         private static void CheckIfAnnualSalaryIsValid(decimal annualSalary)

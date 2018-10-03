@@ -34,7 +34,7 @@ namespace PaySlipVeeToo.Test
         {
             var result = _jsonFileReader.GetTaxTable().TaxBrackets[4].TaxRate;
 
-            Assert.Equal(45, result);
+            Assert.Equal((decimal) 0.45, result);
         }
         
         [Fact]
