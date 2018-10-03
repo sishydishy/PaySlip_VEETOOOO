@@ -1,11 +1,16 @@
-﻿using System.Runtime.InteropServices;
-using PaySlipVeeTwo;
+﻿using System;
 using Xunit;
 
 namespace PaySlipVeeToo.Test
 {
     public class IncomeTaxCalculatorTests
     {
+        private readonly IncomeTaxCalculator _incomeTaxCalculator;
+
+        public IncomeTaxCalculatorTests()
+        {
+            _incomeTaxCalculator = new IncomeTaxCalculator();
+        }
 
         [Theory]
         [InlineData(0, 0)]
@@ -15,10 +20,15 @@ namespace PaySlipVeeToo.Test
         [InlineData(180000, 4519)]
         public void GivenAnnualSalaryWhenApplyingTheRightTaxBracketThenReturnTheCorrectIncomeTax(decimal annualSalary, decimal expected)
         {
-            var incomeTaxCalculator = new IncomeTaxCalculator();
-            var result = incomeTaxCalculator.GetMonthlyIncomeTax(annualSalary);
+            var result = _incomeTaxCalculator.GetMonthlyIncomeTax(annualSalary);
             
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void GivenANotValidAnnualSalaryThenThrowArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => _incomeTaxCalculator.GetMonthlyIncomeTax(-1));
         }
     }
 }

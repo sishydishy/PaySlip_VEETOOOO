@@ -1,13 +1,14 @@
 ﻿using ExtensionMethods;
 using PaySlipVeeTwo;
 
-namespace PaySlipVeeToo.Test
+namespace PaySlipVeeToo
 {
     public class IncomeTaxCalculator
     {
         public decimal GetMonthlyIncomeTax(decimal annualSalary)
         {
             var getTaxBracket = new TaxTableParser(new JSONFileReader());
+            
             var additionalTax = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).AdditionalTax;
             var annualIncomeThreshold = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).AnnualIncomeThreshold;
             var taxRate = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).TaxRate;

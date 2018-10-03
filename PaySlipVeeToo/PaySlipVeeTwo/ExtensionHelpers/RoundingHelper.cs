@@ -12,7 +12,7 @@ namespace ExtensionMethods
 
         private static void ChecksIfNegativeDecimal(decimal number)
         {
-            if (number <= -1) throw new ArgumentOutOfRangeException(nameof(number));
+            if (number <= -1) throw new ArgumentOutOfRangeException($"Invalid {number}");
         }
     }
 }

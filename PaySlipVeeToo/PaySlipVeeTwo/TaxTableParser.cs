@@ -2,7 +2,7 @@
 using System.Linq;
 using PaySlipVeeTwo;
 
-namespace PaySlipVeeToo.Test
+namespace PaySlipVeeToo
 {
     public class TaxTableParser 
     {
