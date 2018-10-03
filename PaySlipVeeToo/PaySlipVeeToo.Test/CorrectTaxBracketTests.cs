@@ -27,7 +27,7 @@ namespace PaySlipVeeToo.Test
         }
 
         [Fact]
-        public void GivenInvalidAnnualSalaryWhenParsingThroughTaxBracketsThenReturnException()
+        public void GivenInvalidAnnualSalaryWhenParsingThroughTaxBracketsThenThrowException()
         {
             Assert.Throws<ArgumentException>(() => _taxTableParser.ReturnCorrectTaxBracket(-1));
         }

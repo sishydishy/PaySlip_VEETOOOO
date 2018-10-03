@@ -1,4 +1,5 @@
-﻿using ExtensionMethods;
+﻿using System;
+using ExtensionMethods;
 using Xunit;
 
 namespace PaySlipVeeToo.Test
@@ -13,7 +14,13 @@ namespace PaySlipVeeToo.Test
         public void GivenANumberWhenCalculatingThenRoundToTheNearestCorrectDollar(decimal number, decimal expected)
         {
             Assert.Equal(expected, number.Rounds());
-            
+        }
+
+        [Fact]
+        public void GivenANegativeNumberWhenCalculatingThenThrowException()
+        {
+            const decimal number = -1;
+            Assert.Throws<ArgumentOutOfRangeException>(() => number.Rounds());
         }
     }
 }
