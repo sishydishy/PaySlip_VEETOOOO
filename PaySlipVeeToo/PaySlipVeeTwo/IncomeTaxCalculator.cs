@@ -5,17 +5,26 @@ namespace PaySlipVeeToo.Test
 {
     public class IncomeTaxCalculator
     {
-        public decimal GetIncomeTax(decimal annualSalary)
+        public decimal GetMonthlyIncomeTax(decimal annualSalary)
         {
             var getTaxBracket = new TaxTableParser(new JSONFileReader());
             var additionalTax = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).AdditionalTax;
             var annualIncomeThreshold = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).AnnualIncomeThreshold;
             var taxRate = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).TaxRate;
-            var @decimal = (annualSalary - annualIncomeThreshold) * taxRate;
-            var dec = @decimal + additionalTax;
-                
-            return (dec/12).Rounds(); 
             
+            var monthlyIncomeTax = CalculateMonthlyIncomeTax(annualSalary, annualIncomeThreshold, taxRate, additionalTax);
+
+            return monthlyIncomeTax.Rounds(); 
+            
+        }
+
+        private static decimal CalculateMonthlyIncomeTax(decimal annualSalary, decimal annualIncomeThreshold, decimal taxRate,
+            decimal additionalTax)
+        {
+            var taxedDisposableIncome = (annualSalary - annualIncomeThreshold) * taxRate;
+            var yearlyIncomeTax = taxedDisposableIncome + additionalTax;
+            var monthlyIncomeTax = yearlyIncomeTax / 12;
+            return monthlyIncomeTax;
         }
     }
 }
