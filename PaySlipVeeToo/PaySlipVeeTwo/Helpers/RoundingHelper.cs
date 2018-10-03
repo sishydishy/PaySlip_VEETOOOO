@@ -1,4 +1,5 @@
 ﻿using System;
+using static PaySlipVeeTwo.ExceptionHelpers;
 
 namespace ExtensionMethods
 {
@@ -8,11 +9,6 @@ namespace ExtensionMethods
         {
             ChecksIfNegativeDecimal(number);
             return Math.Round(number, MidpointRounding.AwayFromZero);
-        }
-
-        private static void ChecksIfNegativeDecimal(decimal number)
-        {
-            if (number <= -1) throw new ArgumentOutOfRangeException($"Invalid {number}");
         }
     }
 }

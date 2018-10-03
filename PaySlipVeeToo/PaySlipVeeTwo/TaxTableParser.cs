@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using PaySlipVeeTwo;
+using static PaySlipVeeTwo.ExceptionHelpers;
 
 namespace PaySlipVeeToo
 {
@@ -18,12 +19,6 @@ namespace PaySlipVeeToo
         {
             CheckIfAnnualSalaryIsValid(annualSalary);
             return  _taxTable.TaxBrackets.Where(x => x.AnnualIncomeThreshold <= annualSalary).OrderByDescending(x => x.AnnualIncomeThreshold).First();
-        }
-
-        private static void CheckIfAnnualSalaryIsValid(decimal annualSalary)
-        {
-            if (annualSalary < 0) throw new ArgumentException("Invalid Annual Salary");
-            if (annualSalary < 0) throw new ArgumentOutOfRangeException(nameof(annualSalary));
         }
     }
 }
