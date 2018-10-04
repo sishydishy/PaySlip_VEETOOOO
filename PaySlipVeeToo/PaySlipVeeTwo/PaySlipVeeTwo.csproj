@@ -9,6 +9,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="8.0.0-beta01" />
     <PackageReference Include="FluentAssertions" Version="5.4.2" />
   </ItemGroup>
 </Project>
