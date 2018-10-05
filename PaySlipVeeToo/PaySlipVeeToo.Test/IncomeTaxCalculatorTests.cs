@@ -5,11 +5,11 @@ namespace PaySlipVeeToo.Test
 {
     public class IncomeTaxCalculatorTests
     {
-        private readonly IncomeTaxCalculator _incomeTaxCalculator;
+        private readonly ICalculator _calculator;
 
         public IncomeTaxCalculatorTests()
         {
-            _incomeTaxCalculator = new IncomeTaxCalculator();
+            _calculator = new IncomeTaxCalculator();
         }
 
         [Theory]
@@ -20,7 +20,7 @@ namespace PaySlipVeeToo.Test
         [InlineData(180000, 4519)]
         public void GivenAnnualSalaryWhenApplyingTheRightTaxBracketThenReturnTheCorrectIncomeTax(decimal annualSalary, decimal expected)
         {
-            var result = _incomeTaxCalculator.GetMonthlyIncomeTax(annualSalary);
+            var result = _calculator.GetMonthlyIncomeTax(annualSalary);
             
             Assert.Equal(expected, result);
         }
@@ -28,7 +28,7 @@ namespace PaySlipVeeToo.Test
         [Fact]
         public void GivenANotValidAnnualSalaryThenThrowArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => _incomeTaxCalculator.GetMonthlyIncomeTax(-1));
+            Assert.Throws<ArgumentException>(() => _calculator.GetMonthlyIncomeTax(-1));
         }
     }
 }

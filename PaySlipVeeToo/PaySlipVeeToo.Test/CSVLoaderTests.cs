@@ -8,7 +8,7 @@ namespace PaySlipVeeToo.Test
         public void GivenCSVInputWhenParsingThenReturnEmployeeName()
         {
             var csvFileReader = new CSVFileReader();
-            var employeeDetails = csvFileReader.GetEmployeeDetails();
+            var employeeDetails = csvFileReader.DeserialiseEmployeeDetails();
             var result = employeeDetails[0].FullName;
             
             Assert.Equal("David Rudd", result);
@@ -18,7 +18,7 @@ namespace PaySlipVeeToo.Test
         public void GivenCSVInputWhenParsingThenReturnAnnualSalary()
         {
             var csvFileReader = new CSVFileReader();
-            var employeeDetails = csvFileReader.GetEmployeeDetails();
+            var employeeDetails = csvFileReader.DeserialiseEmployeeDetails();
             var result = employeeDetails[0].AnnualSalary;
             
             Assert.Equal(60050, result);
@@ -28,7 +28,7 @@ namespace PaySlipVeeToo.Test
         public void GivenCSVInputWhenParsingThenReturnSuperRate()
         {
             var csvFileReader = new CSVFileReader();
-            var employeeDetails = csvFileReader.GetEmployeeDetails();
+            var employeeDetails = csvFileReader.DeserialiseEmployeeDetails();
             var result = employeeDetails[0].SuperRate;
             
             Assert.Equal("9%", result);
@@ -38,7 +38,7 @@ namespace PaySlipVeeToo.Test
         public void GivenCSVInputWhenParsingThenReturnPayPeriod()
         {
             var csvFileReader = new CSVFileReader();
-            var employeeDetails = csvFileReader.GetEmployeeDetails();
+            var employeeDetails = csvFileReader.DeserialiseEmployeeDetails();
             var result = employeeDetails[0].PayPeriod;
             
             Assert.Equal("01 March – 31 March", result);

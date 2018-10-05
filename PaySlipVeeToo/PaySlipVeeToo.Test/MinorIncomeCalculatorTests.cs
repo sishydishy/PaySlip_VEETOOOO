@@ -5,11 +5,11 @@ namespace PaySlipVeeToo.Test
 {
     public class MinorIncomeCalculatorTests
     {
-        private readonly MinorIncomeCalculator _minorIncomeCalculator;
+        private readonly ICalculator _calculator;
 
         public MinorIncomeCalculatorTests()
         {
-            _minorIncomeCalculator = new MinorIncomeCalculator();
+            _calculator = new IncomeTaxCalculator();
         }
 
         [Theory]
@@ -20,7 +20,7 @@ namespace PaySlipVeeToo.Test
         [InlineData(180001, 15000)]
         public void GivenAnnualSalaryThenReturnGrossIncome(decimal annualSalary, decimal expected)
         {
-            var result = _minorIncomeCalculator.GetGrossIncome(annualSalary);
+            var result = _calculator.GetGrossIncome(annualSalary);
             
             Assert.Equal(expected,result);
         }
@@ -33,7 +33,7 @@ namespace PaySlipVeeToo.Test
         [InlineData(180001, 7500, "50%")]
         public void GivenGrossIncomeWhenApplyingSuperRateThenReturnSuper(decimal annualSalary, decimal expected, string superRate)
         {
-            var result = _minorIncomeCalculator.GetSuper(annualSalary, superRate);
+            var result = _calculator.GetSuper(annualSalary, superRate);
             
             Assert.Equal(expected, result);
         }
@@ -43,13 +43,13 @@ namespace PaySlipVeeToo.Test
         [InlineData(60050, "55%")]
         public void GivenANotValidSuperRateThenThrowException(decimal annualSalary, string superRate)
         {
-            Assert.Throws<ArgumentException>(() => _minorIncomeCalculator.GetSuper(annualSalary, superRate));
+            Assert.Throws<ArgumentException>(() => _calculator.GetSuper(annualSalary, superRate));
         }
 
         [Fact]
         public void GivenANotValidAnnualSalaryThenThrowException()
         {
-            Assert.Throws<ArgumentException>(() => _minorIncomeCalculator.GetGrossIncome(-1));
+            Assert.Throws<ArgumentException>(() => _calculator.GetGrossIncome(-1));
         }
 
         

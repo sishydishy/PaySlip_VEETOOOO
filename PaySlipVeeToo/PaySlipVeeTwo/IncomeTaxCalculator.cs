@@ -1,9 +1,11 @@
-﻿using ExtensionMethods;
+﻿using System.Net.NetworkInformation;
+using ExtensionMethods;
 using PaySlipVeeTwo;
+using static PaySlipVeeTwo.ExceptionHelpers;
 
 namespace PaySlipVeeToo
 {
-    public class IncomeTaxCalculator
+    public class IncomeTaxCalculator : ICalculator
     {
         public decimal GetMonthlyIncomeTax(decimal annualSalary)
         {
@@ -17,6 +19,24 @@ namespace PaySlipVeeToo
 
             return monthlyIncomeTax.Rounds(); 
             
+        }
+
+        public decimal GetGrossIncome(decimal annualSalary)
+        {
+            CheckIfAnnualSalaryIsValid(annualSalary);
+            const int MONTHS_IN_A_YEAR = 12;
+            var grossIncome = (annualSalary / MONTHS_IN_A_YEAR).Rounds();
+            
+            return grossIncome;
+        }
+
+        public decimal GetSuper(decimal annualSalary, string superRate)
+        {
+            var superRateInDecimal =CheckIfSuperRateIsWithinAcceptableRange(superRate);
+            var grossIncome = GetGrossIncome(annualSalary);
+            var super = (grossIncome * superRateInDecimal).Rounds();
+            
+            return super;
         }
 
         private static decimal CalculateMonthlyIncomeTax(decimal annualSalary, decimal annualIncomeThreshold, decimal taxRate,

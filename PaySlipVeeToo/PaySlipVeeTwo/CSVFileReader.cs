@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using CsvHelper.Configuration;
+using PaySlipVeeTwo;
 
-namespace PaySlipVeeToo.Test
+namespace PaySlipVeeToo
 {
-    public class CSVFileReader
+    public class CSVFileReader:IEmployeeDetails
     {
-        public List<EmployeeDetails> GetEmployeeDetails()
+        public List<EmployeeDetails> DeserialiseEmployeeDetails()
         {
             var filePath =
                 "/Users/saish.dharvotkar/Projects/src/Katas/PaySlip_VEETOOOO/PaySlipVeeToo/PaySlipVeeTwo/Resources/Sample_Input.csv";
@@ -19,6 +20,11 @@ namespace PaySlipVeeToo.Test
             var records = csv.GetRecords<EmployeeDetails>().ToList();
 
             return records;
+        }
+
+        public List<EmployeeDetails> GetEmployeeDetails()
+        {
+            return DeserialiseEmployeeDetails();
         }
         
         
@@ -34,18 +40,5 @@ namespace PaySlipVeeToo.Test
             Map(x => x.SuperRate).Name("super rate (%)");
             Map(x => x.PayPeriod).Name("payment start date");
         }
-    }
-
-
-    public class EmployeeDetails
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
-        public string FullName => FirstName + " "+ LastName;
-
-        public decimal AnnualSalary { get; set; }
-        public string SuperRate { get; set; }
-        public string PayPeriod { get; set; }
     }
 }
