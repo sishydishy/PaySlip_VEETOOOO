@@ -1,13 +1,14 @@
-﻿using Xunit;
+﻿using PaySlipVeeTwo;
+using Xunit;
 
 namespace PaySlipVeeToo.Test
 {
-    public class PaySlipGeneratorTests
+    public class PaySlipDetailsTests
     {
         private readonly ICalculator _calculator;
-        private readonly CSVFileReader _csvFileReader;
+        private readonly IEmployeeDetails _csvFileReader;
 
-        public PaySlipGeneratorTests()
+        public PaySlipDetailsTests()
         {
             _calculator = new IncomeTaxCalculator();
             _csvFileReader = new CSVFileReader();
@@ -37,8 +38,6 @@ namespace PaySlipVeeToo.Test
         public void GivenCSVEmployeeDetailsWhenGeneratingSuperRateForPayPeriodThenReturnSuper()
         {
             var employeeDetails = _csvFileReader.GetEmployeeDetails();
-            var paySlipGenerator = new PaySlipGenerator();
-            var result = paySlipGenerator.GetPaySlipDetails(employeeDetails[0]);
             var annualSalary = employeeDetails[0].AnnualSalary;
             var superRate = employeeDetails[0].SuperRate;
             var result = _calculator.GetSuper(annualSalary, superRate);
