@@ -5,7 +5,7 @@ using static PaySlipVeeTwo.ExceptionHelpers;
 
 namespace PaySlipVeeToo
 {
-    public class IncomeTaxCalculator : ICalculator
+    public class TaxCalculator : ICalculator
     {
         public decimal GetMonthlyIncomeTax(decimal annualSalary)
         {
@@ -37,6 +37,11 @@ namespace PaySlipVeeToo
             var super = (grossIncome * superRateInDecimal).Rounds();
             
             return super;
+        }
+
+        public decimal GetNetIncome(decimal annualSalary)
+        {
+            return GetGrossIncome(annualSalary) - GetMonthlyIncomeTax(annualSalary);
         }
 
 

@@ -5,5 +5,6 @@
         decimal GetMonthlyIncomeTax(decimal annualSalary);
         decimal GetGrossIncome(decimal annualSalary);
         decimal GetSuper(decimal annualSalary, string superRate);
+        decimal GetNetIncome(decimal annualSalary);
     }
 }

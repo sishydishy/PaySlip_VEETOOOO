@@ -9,7 +9,7 @@ namespace PaySlipVeeToo.Test
 
         public MinorIncomeCalculatorTests()
         {
-            _calculator = new IncomeTaxCalculator();
+            _calculator = new TaxCalculator();
         }
 
         [Theory]

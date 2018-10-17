@@ -1,4 +1,5 @@
 ﻿using System;
+using PaySlipVeeToo;
 
 namespace PaySlipVeeTwo
 {
@@ -6,7 +7,9 @@ namespace PaySlipVeeTwo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var paySlipGenerator = new PaySlipGenerator();
+            
+            paySlipGenerator.Execute();
         }
     }
 }
