@@ -26,14 +26,19 @@ namespace PaySlipVeeToo
             
             Thread.Sleep(3000);
             
+            GetPaySlipDetails();
+        }
+
+        private void GetPaySlipDetails()
+        {
             foreach (var employee in _employeeDetails.GetEmployeeDetails())
             {
                 Console.WriteLine("Name: " + employee.FullName);
                 Console.WriteLine("Pay Period: " + employee.PayPeriod);
                 Console.WriteLine("Gross Income: " + _calculator.GetGrossIncome(employee.AnnualSalary));
-                Console.WriteLine("Income Tax: " + _calculator.GetMonthlyIncomeTax(employee.AnnualSalary) );
+                Console.WriteLine("Income Tax: " + _calculator.GetMonthlyIncomeTax(employee.AnnualSalary));
                 Console.WriteLine("Net Income: " + _calculator.GetNetIncome(employee.AnnualSalary));
-                Console.WriteLine("Super: " + _calculator.GetSuper(employee.AnnualSalary, employee.SuperRate)+ NewLine);
+                Console.WriteLine("Super: " + _calculator.GetSuper(employee.AnnualSalary, employee.SuperRate) + NewLine);
             }
         }
     }

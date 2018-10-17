@@ -26,8 +26,6 @@ namespace PaySlipVeeToo
         {
             return DeserialiseEmployeeDetails();
         }
-        
-        
     }
 
     public class ModelMap : ClassMap<EmployeeDetails>

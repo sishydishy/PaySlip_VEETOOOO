@@ -21,7 +21,7 @@ namespace PaySlipVeeToo.Test
         [MemberData(nameof(GetData))]
         public void GivenAnnualSalaryWhenParsingThroughTaxBracketsThenReturnCorrectTaxBracket(object expected , decimal annualSalary)
         {
-            var result = _taxTableParser.ReturnCorrectTaxBracket(annualSalary);
+            var result = _taxTableParser.GetCorrectTaxBracket(annualSalary);
 
             expected.Should().BeEquivalentTo(result);
         }
@@ -29,7 +29,7 @@ namespace PaySlipVeeToo.Test
         [Fact]
         public void GivenInvalidAnnualSalaryWhenParsingThroughTaxBracketsThenThrowException()
         {
-            Assert.Throws<ArgumentException>(() => _taxTableParser.ReturnCorrectTaxBracket(-1));
+            Assert.Throws<ArgumentException>(() => _taxTableParser.GetCorrectTaxBracket(-1));
         }
         
         

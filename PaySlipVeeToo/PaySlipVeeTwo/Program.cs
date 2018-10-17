@@ -5,7 +5,7 @@ namespace PaySlipVeeTwo
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var paySlipGenerator = new PaySlipGenerator();
             

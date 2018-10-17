@@ -15,7 +15,7 @@ namespace PaySlipVeeToo
 
         }
 
-        public TaxBracket ReturnCorrectTaxBracket(decimal annualSalary)
+        public TaxBracket GetCorrectTaxBracket(decimal annualSalary)
         {
             CheckIfAnnualSalaryIsValid(annualSalary);
             return  _taxTable.TaxBrackets.Where(x => x.AnnualIncomeThreshold <= annualSalary).OrderByDescending(x => x.AnnualIncomeThreshold).First();

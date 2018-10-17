@@ -11,9 +11,9 @@ namespace PaySlipVeeToo
         {
             var getTaxBracket = new TaxTableParser(new JSONFileReader());
             
-            var additionalTax = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).AdditionalTax;
-            var annualIncomeThreshold = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).AnnualIncomeThreshold;
-            var taxRate = getTaxBracket.ReturnCorrectTaxBracket(annualSalary).TaxRate;
+            var additionalTax = getTaxBracket.GetCorrectTaxBracket(annualSalary).AdditionalTax;
+            var annualIncomeThreshold = getTaxBracket.GetCorrectTaxBracket(annualSalary).AnnualIncomeThreshold;
+            var taxRate = getTaxBracket.GetCorrectTaxBracket(annualSalary).TaxRate;
             
             var monthlyIncomeTax = CalculateMonthlyIncomeTax(annualSalary, annualIncomeThreshold, taxRate, additionalTax);
 
