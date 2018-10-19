@@ -12,4 +12,14 @@
     <PackageReference Include="CsvHelper" Version="8.0.0-beta01" />
     <PackageReference Include="FluentAssertions" Version="5.4.2" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Sample_Input.csv" />
+    <EmbeddedResource Include="Resources\Sample_Input.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Remove="Resources\TaxableIncomeBrackets.json" />
+    <EmbeddedResource Include="Resources\TaxableIncomeBrackets.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

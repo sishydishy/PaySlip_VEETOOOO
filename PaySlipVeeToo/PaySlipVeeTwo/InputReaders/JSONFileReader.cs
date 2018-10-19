@@ -10,7 +10,7 @@ namespace PaySlipVeeTwo
         public TaxTable DeserialiseJSON()
         {
             
-            var filePath = "/Users/saish.dharvotkar/Projects/src/Katas/PaySlip_VEETOOOO/PaySlipVeeToo/PaySlipVeeTwo/Resources/TaxableIncomeBrackets.json";
+            var filePath = "Resources/TaxableIncomeBrackets.json";
             var streamReader = new StreamReader(filePath);
             var json = streamReader.ReadToEnd();
             TaxTable taxTable = JsonConvert.DeserializeObject<TaxTable>(json);

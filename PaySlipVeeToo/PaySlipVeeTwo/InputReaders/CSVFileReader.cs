@@ -12,8 +12,7 @@ namespace PaySlipVeeToo
     {
         public List<EmployeeDetails> DeserialiseEmployeeDetails()
         {
-            var filePath =
-                "/Users/saish.dharvotkar/Projects/src/Katas/PaySlip_VEETOOOO/PaySlipVeeToo/PaySlipVeeTwo/Resources/Sample_Input.csv";
+            var filePath = "Resources/Sample_Input.csv";
             var streamReader = new StreamReader(filePath);
             var csv = new CsvReader(streamReader);
             csv.Configuration.RegisterClassMap<ModelMap>();
